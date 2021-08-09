@@ -33,26 +33,26 @@ export default class Start extends React.Component {
 
             <View style = {styles.boxColors}>
                 <Text style = {styles.chooseColorText}>
-                    Choose your Chat backgorund color
+                    Choose your Chat background color
                 </Text>
 
-                {/* choose color for chat bachground */}
+                {/* choose color for chat background */}
                 <View style={styles.chatColors}>
                     <TouchableOpacity
                     style={styles.chatColor1}
-                    onPress={() => this.setState({ chatColor: '#090C08' })}
+                    onPress={() => this.setState({ chatColors: '#090C08' })}
                     />
                     <TouchableOpacity
                     style={styles.chatColor2}
-                    onPress={() => this.setState({ chatColor: '#474056' })}
+                    onPress={() => this.setState({ chatColors: '#474056' })}
                     />
                     <TouchableOpacity
                     style={styles.chatColor3}
-                    onPress={() => this.setState({ chatColor: '#8A95A5' })}
+                    onPress={() => this.setState({ chatColors: '#8A95A5' })}
                     />
                     <TouchableOpacity
                     style={styles.chatColor4}
-                    onPress={() => this.setState({ chatColor: '#B9C6AE' })}
+                    onPress={() => this.setState({ chatColors: '#B9C6AE' })}
                     />
                 </View>
             </View>
@@ -61,7 +61,7 @@ export default class Start extends React.Component {
             <View>
 
                 <TouchableOpacity>
-                style={styles.chatColor}
+                style={styles.chatButton}
                 onPress={() => this.props.navigation.navigate('Chat', { name: this.state.name, chatColor: this.state.chatColor })}
                 </TouchableOpacity>
 
@@ -112,11 +112,12 @@ const styles = StyleSheet.create({
     chooseColorText: {
         fontSize: 16, 
         fontWeight: 300, 
-        color: #757083, 
+        color: '#757083', 
         opacity: 100
     },
     chatColors: {
-        flexDirection: "column"
+        flexDirection: "column",
+        justifyContent: 'space-between',
     },
     chatColor1, chatColor2, chatColor3, chatColor4: {
         width: 60,
@@ -134,5 +135,18 @@ const styles = StyleSheet.create({
     },
     chatColor4:  {
         backgroundColor: '#B9C6AE',
+    },
+    chatButton: {
+        marginTop: 10,
+        backgroundColor: '#757083',
+        width: '88%',
+        padding: 15,
+    },
+    chatButtonText: {
+        fontSize: 16,
+        fontWeight: '600',
+        color: '#FFFFFF',
+        textAlign: 'center',
+        lineHeight: 60,
     }
   });
