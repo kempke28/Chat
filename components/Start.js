@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { View, Text, Button, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
 
 
 // Set image background.
 const ImageBackground = require('../assets/Background-Image.png');
 
-export default class Start extends React.Component {
+export default class Start extends Component {
     constructor(props) {
         super(props);
         this.state = {
           name: ''
-        }}
+        };
+    }
 
   render() {
     return (
@@ -40,19 +41,19 @@ export default class Start extends React.Component {
                 <View style={styles.chatColors}>
                     <TouchableOpacity
                     style={styles.chatColor1}
-                    onPress={() => this.setState({ chatColors: '#090C08' })}
+                    onPress={() => this.setState({ chatColor1 })}
                     />
                     <TouchableOpacity
                     style={styles.chatColor2}
-                    onPress={() => this.setState({ chatColors: '#474056' })}
+                    onPress={() => this.setState({ chatColor2 })}
                     />
                     <TouchableOpacity
                     style={styles.chatColor3}
-                    onPress={() => this.setState({ chatColors: '#8A95A5' })}
+                    onPress={() => this.setState({ chatColor3 })}
                     />
                     <TouchableOpacity
                     style={styles.chatColor4}
-                    onPress={() => this.setState({ chatColors: '#B9C6AE' })}
+                    onPress={() => this.setState({ chatColor4 })}
                     />
                 </View>
             </View>
@@ -74,6 +75,12 @@ export default class Start extends React.Component {
     
     )};
 }
+
+const colorDimensions = {
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+};
 
 const styles = StyleSheet.create({
     container: {
@@ -111,7 +118,7 @@ const styles = StyleSheet.create({
     },
     chooseColorText: {
         fontSize: 16, 
-        fontWeight: 300, 
+        fontWeight: '300', 
         color: '#757083', 
         opacity: 100
     },
@@ -119,22 +126,21 @@ const styles = StyleSheet.create({
         flexDirection: "column",
         justifyContent: 'space-between',
     },
-    chatColor1, chatColor2, chatColor3, chatColor4: {
-        width: 60,
-        height: 60,
-        borderRadius: 30,
-    },
     chatColor1:  {
         backgroundColor: '#090C08',
+        ...colorDimensions
     },
-    chatColor3:  {
+    chatColor2:  {
         backgroundColor: '#474056',
+        ...colorDimensions
     },
     chatColor3:  {
         backgroundColor: '#8A95A5',
+        ...colorDimensions
     },
     chatColor4:  {
         backgroundColor: '#B9C6AE',
+        ...colorDimensions
     },
     chatButton: {
         marginTop: 10,

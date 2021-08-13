@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { GiftedChat, Bubble, InputToolbar } from 'react-native-gifted-chat';
 import { View, Text, Button, TextInput, Stylesheet, Platform, KeyboardAvoidingView } from 'react-native';
 
@@ -6,11 +6,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import NetInfo from '@react-native-community/netinfo';
 
-export default class Chat extends React.Component {
+export default class Chat extends Component {
 
-  constructor() {
+  constructor(props) {
       
-    super();
+    super(props);
       this.state = {
       messages: [],
       uid: "",
