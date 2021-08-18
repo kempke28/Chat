@@ -8,9 +8,9 @@ import NetInfo from '@react-native-community/netinfo';
 
 export default class Chat extends Component {
 
-  constructor(props) {
+  constructor() {
       
-    super(props);
+    super();
       this.state = {
       messages: [],
       uid: "",
@@ -18,6 +18,7 @@ export default class Chat extends Component {
           _id: "",
           name: "",
           avatar: "",
+          createdAt: ""
         },
       }
       
@@ -53,14 +54,22 @@ export default class Chat extends Component {
     // fetching collection from firebase
     componentDidMount() {
 
+    let name = this.props.route.params.name;
+    this.props.navigation.setOptions({ title: name });
+
+      // check connection of the user
       NetInfo.fetch().then(connection => {
         if (connection.isConnected) {
           console.log('online');
+          this.setState ({
+            isConnected: true
+          });
         } else {
           console.log('offline');
         }
       });
-
+      
+      //get the messages from the firebase collection
     this.referenceChatMessages = firebase.firestore().collection("messages");
     this.authUnsubscribe = firebase.auth().onAuthStateChanged(async (user) => {
       if (!user) {
@@ -69,11 +78,13 @@ export default class Chat extends Component {
         this.setState({
           uid: user.uid,
           messages: [], 
+          createdAt: new Date(),
           user: {
-              _id: 2,
+              _id: user.uid,
               name: user.name,
               avatar: 'https://placeimg.com/140/140/any',
-          }}),
+          }       
+        }),
           
         this.unsubscribe = this.referenceChatMessages
           .orderBy("createdAt", "desc")
