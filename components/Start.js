@@ -64,7 +64,7 @@ export default class Start extends React.Component {
               accessibilityRole="button"
               style={styles.buttonContainer}
               onPress={() =>
-                this.props.navigation.navigate("Chat", { name: this.state.name, color: this.state.bcolor })
+                this.props.navigation.navigate("Chat", { name: this.state.name, bcolor: this.state.bcolor })
               }
             >
             {/*Button to GO*/}
