@@ -13,7 +13,7 @@ import firebase from "firebase/app";
 import 'firebase/auth';
 import "firebase/firestore";
 
-export default class Chat extends Component {
+export default class Chat extends React.Component {
 
   constructor() {
 
@@ -69,10 +69,9 @@ export default class Chat extends Component {
 
         //if messages fetch return this info from messages
         this.setState({
-          _id: user._id,
           messages: [], 
           user: {
-            _id: user._id,
+            _id: user.uid,
             createdAt: new Date(),
             name: name,
             avatar: "https://placeimg.com/140/140/any", 
@@ -127,18 +126,8 @@ export default class Chat extends Component {
       });
     }
 
-
-      // on send function for messages
-    onSend(messages = []) {
-      this.setState(previousState => ({
-        messages: GiftedChat.append(previousState.messages, messages),
-      }), () => {
-        this.saveMessages();
-      });
-    }
-
-
-      //save messages on DB
+    
+    //save messages on DB
     async saveMessages() {
       try {
         await AsyncStorage.setItem('messages', JSON.stringify(this.state.messages));
@@ -146,6 +135,19 @@ export default class Chat extends Component {
         console.log(error.message);
       }
     }
+
+
+      // on send function for messages
+    onSend(messages = []) {
+      this.setState(previousState => ({
+        messages: GiftedChat.append(previousState.messages, messages),
+      }), () => {
+        this.addMessage();
+        this.saveMessages();
+      });
+    }
+
+
 
     
       //delete messages
@@ -247,11 +249,12 @@ export default class Chat extends Component {
     
     //Render name and color selected from previous screen
     let name = this.props.route.params.name;
+    let selectedBackgroundColor= this.props.route.params.bkgColor
     this.props.navigation.setOptions({ title: name });
 
     return (
 
-        <View style={{ flex: 1, backgroundColor: this.state.bcolor }}>
+        <View style={{ flex: 1, backgroundColor: selectedBackgroundColor }}>
 
         <GiftedChat
             renderBubble={this.renderBubble.bind(this)}

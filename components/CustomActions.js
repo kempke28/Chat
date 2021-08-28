@@ -5,17 +5,18 @@ import PropTypes from 'prop-types';
 import * as Permissions from 'expo-permissions';
 import * as ImagePicker from 'expo-image-picker';
 import * as Location from 'expo-location';
+import * as Camera from 'expo-camera';
 
 import firebase from "firebase/app";
-import 'firebase/auth';
-import "firebase/firestore";;
+import "firebase/auth";
+import "firebase/firestore";
 
 
 export default class CustomActions extends React.Component {
 
   // pick image from library
   pickImage = async () => {
-    const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
+    const { status } = await ImagePicker.getMediaLibraryPermissionsAsync();
     try { if (status === 'granted') {
 
         let result = await ImagePicker.launchImageLibraryAsync({
@@ -33,7 +34,7 @@ export default class CustomActions extends React.Component {
 
   // take a photo action
   takePhoto = async () => {
-    const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL, Permissions.CAMERA);
+    const { status } = await Camera.getCameraPermissionsAsync();
     try {
       if (status === 'granted') {
         let result = await ImagePicker.launchCameraAsync({
@@ -51,7 +52,7 @@ export default class CustomActions extends React.Component {
 
   // user can send their location
   getLocation = async () => {
-    const { status } = await Permissions.askAsync(Permissions.LOCATION);
+    const { status } = await Location.requestForegroundPermissionsAsync();
     try {
       if (status === "granted") {
         const result = await Location.getCurrentPositionAsync({}

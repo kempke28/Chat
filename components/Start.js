@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { View, Text, Button, StyleSheet, TextInput,  TouchableOpacity, ImageBackground } from 'react-native';
 
 
@@ -64,7 +64,7 @@ export default class Start extends React.Component {
               accessibilityRole="button"
               style={styles.buttonContainer}
               onPress={() =>
-                this.props.navigation.navigate("Chat", { name: this.state.name, bcolor: this.state.bcolor })
+                this.props.navigation.navigate("Chat", { name: this.state.name, bkgColor: this.state.bcolor })
               }
             >
             {/*Button to GO*/}
