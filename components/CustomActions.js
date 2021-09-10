@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import * as Permissions from 'expo-permissions';
 import * as ImagePicker from 'expo-image-picker';
 import * as Location from 'expo-location';
-import * as Camera from 'expo-camera';
+import { Camera } from 'expo-camera';
 
 import firebase from "firebase/app";
 import "firebase/auth";
@@ -16,7 +16,7 @@ export default class CustomActions extends React.Component {
 
   // pick image from library
   pickImage = async () => {
-    const { status } = await ImagePicker.getMediaLibraryPermissionsAsync();
+    const { status } = await await ImagePicker.requestMediaLibraryPermissionsAsync();
     try { if (status === 'granted') {
 
         let result = await ImagePicker.launchImageLibraryAsync({
@@ -34,7 +34,7 @@ export default class CustomActions extends React.Component {
 
   // take a photo action
   takePhoto = async () => {
-    const { status } = await Camera.getCameraPermissionsAsync();
+    const { status } = await Camera.requestPermissionsAsync();
     try {
       if (status === 'granted') {
         let result = await ImagePicker.launchCameraAsync({
@@ -126,7 +126,7 @@ export default class CustomActions extends React.Component {
     blob.close();
 
     return await snapshot.ref.getDownloadURL();
-  }
+  };
 
   render() {
     return (
