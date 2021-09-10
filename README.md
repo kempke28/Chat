@@ -58,4 +58,6 @@ expo start
 ```
 
 once there, a QR code will be given to scan in the phone or at the emulator. The 'expo app' will be needed to exacute the code.
-The chat will be open to enjoy /play crickets
+The chat will be open to enjoy.
+
+
