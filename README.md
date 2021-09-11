@@ -6,12 +6,12 @@ Create a little message mobile app using React.Native that can execute tasks, su
 
 ## :cookie: Features
 
-Created with React.Native and expo using Google Firebase as an online database storage and a Gifted Chat library for nice lookiing interface purposes. 
-Let the user select pictures from the personal library to send.
-Allow to send location 
-Allows the user take some pictures using the camera
-As a chat let 2 people send messages without restrictions
-Let the user select the name of the user to whom the message is going to be send
+- Created with React.Native and expo using Google Firebase as an online database storage and a Gifted Chat library for nice lookiing interface purposes. 
+- Let the user select pictures from the personal library to send.
+- Allow to send location 
+- Allows the user take some pictures using the camera
+- As a chat let 2 people send messages without restrictions
+- Let the user select the name of the user to whom the message is going to be send
 
 ## :cookie: Tools
 
