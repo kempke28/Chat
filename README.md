@@ -6,7 +6,7 @@ Create a little message mobile app using React.Native that can execute tasks, su
 
 ## :cookie: Features
 
-- Created with React.Native and expo using Google Firebase as an online database storage and a Gifted Chat library for nice lookiing interface purposes. 
+- Created with React.Native and expo using Google Firebase as an online database storage and a Gifted Chat library for nice looking interface purposes. 
 - Let the user select pictures from the personal library to send.
 - Allow to send location 
 - Allows the user take some pictures using the camera
@@ -22,13 +22,13 @@ Create a little message mobile app using React.Native that can execute tasks, su
 
 ## :cookie: Setting the project up
 
-Once cloned in the folder and opened, the first thing neet to be done is install the library with the command
+Once cloned in the folder, and opened, the first thing need to be done is install the library with the command
 
 ```bash
 npm install expo-cli --global
 ```
 
-Once that, is done firebase is the next thing in the list, Trying to configure the databe to be part of the project creating a new collection, some data of the firebase conoletion are needes to be fully oprationnal at the cloud.
+Once that, is done firebase is the next thing in the list, Trying to configure the database to be part of the project creating a new collection, some data of the firebase collection are needed to be fully operational at the cloud.
  Ex.
  
  ```python
@@ -47,7 +47,7 @@ Once that, is done firebase is the next thing in the list, Trying to configure t
     }
   ```
     
-Firebase cloud storage data will be given by the google firebase once creatted the collection
+Firebase cloud storage data will be given by the google firebase once created the collection
 
 ## :cookie: Run the project
 
@@ -57,7 +57,7 @@ The command to run the app is the next
 expo start
 ```
 
-once there, a QR code will be given to scan in the phone or at the emulator. The 'expo app' will be needed to exacute the code.
+Once there, a QR code will be given to scan in the phone or at the emulator. The 'expo app' will be needed to execute the code.
 The chat will be open to enjoy.
 
 
