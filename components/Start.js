@@ -16,6 +16,7 @@ export default class Start extends React.Component {
 
         //Background image
         <ImageBackground
+        
           source={require("../assets/Background-Image.png")} style={styles.background}
         >
           {/* Title */}

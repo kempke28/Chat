@@ -1,6 +1,4 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 
 // import the screens
 import Start from './components/Start';
@@ -18,9 +16,9 @@ const Stack = createStackNavigator();
 
 export default class App extends React.Component {
 
-  constructor(props) {
-  super(props);
-  }
+  // constructor(props) {
+  // super(props);
+  // }
 
 render() {
   

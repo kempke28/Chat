@@ -2,15 +2,11 @@ import React from 'react';
 import { TouchableOpacity, View, Text, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 
-import * as Permissions from 'expo-permissions';
 import * as ImagePicker from 'expo-image-picker';
 import * as Location from 'expo-location';
 import { Camera } from 'expo-camera';
 
-import firebase from "firebase/app";
-import "firebase/auth";
-import "firebase/firestore";
-
+import firebase from "firebase";
 
 export default class CustomActions extends React.Component {
 
@@ -52,28 +48,31 @@ export default class CustomActions extends React.Component {
 
   // user can send their location
   getLocation = async () => {
-    const { status } = await Location.requestForegroundPermissionsAsync();
+    const { status } = await Location.getForegroundPermissionsAsync();
+
     try {
       if (status === "granted") {
-        const result = await Location.getCurrentPositionAsync({}
-        ).catch((error) => console.log(error));
-        
-        const longitude = JSON.stringify(result.coords.longitude);
-        const altitude = JSON.stringify(result.coords.latitude);
-        
-        if (result) {
+        let location = await Location.getCurrentPositionAsync({
+          accuracy: Location.Accuracy.Highest
+        }).catch((error) => {
+          console.error(error);
+        });
+      
+
+        if (location) {
+
           this.props.onSend({
             location: {
-              longitude: result.coords.longitude,
-              latitude: result.coords.latitude,
+              longitude: location.coords.longitude,
+              latitude: location.coords.latitude,
             },
           });
         }
-      }
-    } catch (error) {
+      }} catch (error) {
       console.log(error.message);
     }
-  };
+  }
+    
 
   // renders action sheet with options below
   onActionPress = () => {
@@ -96,10 +95,8 @@ export default class CustomActions extends React.Component {
             console.log('user wants to get their location');
             return this.getLocation();
           default:
-        }
-      },
-    );
-  };
+        }},);
+      };
 
   uploadImageFetch = async (uri) => {
     const blob = await new Promise((resolve, reject) => {
